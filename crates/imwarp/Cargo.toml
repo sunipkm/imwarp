@@ -1,0 +1,23 @@
+[package]
+name = "imwarp"
+description = "2-D image warping and interpolation in pure Rust"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+readme = "README.md"
+keywords = ["image", "interpolation", "warp", "spline", "scipy"]
+categories = ["science", "algorithms", "multimedia::images"]
+
+[dependencies]
+ndarray = { workspace = true, features = ["rayon"] }
+rayon.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true
+
+[lints]
+workspace = true

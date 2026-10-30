@@ -1,0 +1,32 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "imwarp"
+description = "scipy.ndimage.map_coordinates and skimage.transform.warp in Rust, without SciPy"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Sunip K. Mukherjee" }]
+dependencies = ["numpy>=1.26"]
+# The version is read from Cargo, which tools/stamp_version.py sets from the git tag.
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Rust",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "scipy", "scikit-image"]
+
+[tool.maturin]
+manifest-path = "../crates/imwarp-py/Cargo.toml"
+module-name = "imwarp._native"
+python-source = "."
+features = ["extension-module"]
+profile = "release"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
